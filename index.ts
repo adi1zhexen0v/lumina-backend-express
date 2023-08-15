@@ -1,22 +1,26 @@
-import express, { Express, Request, Response } from 'express';
-
+import express, { Express } from 'express';
+import routes from './app/routes/routes.js';
+import morganMiddleware from './app/middlewares/morgan.middleware.js';
+import connectDatabase from './services/database.js';
 import logger from './utils/logger.js';
-
 import 'dotenv/config';
-const { PORT } = process.env;
+
+const { PORT, DB_URL } = process.env;
 
 const app: Express = express();
-app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-	res.send('Hello TypeScript');
-});
+app.use(express.json());
+app.use(morganMiddleware)
+app.use(routes);
 
 const port = PORT || 4000;
 
 const start = async () => {
 	try {
-		app.listen(port, () => logger.info(`Server is listening on port ${port}`));
+    await connectDatabase(DB_URL!);
+		app.listen(port, () => {
+      logger.info(`Server is listening on port ${port}`);
+    });
 	} catch (error) {
 		logger.error(error);
 	}
