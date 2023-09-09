@@ -10,17 +10,17 @@ const { PORT, DB_URL } = process.env;
 const app: Express = express();
 
 app.use(express.json());
-app.use(morganMiddleware)
+app.use(morganMiddleware);
 app.use(routes);
 
 const port = PORT || 4000;
 
 const start = async () => {
 	try {
-    await connectDatabase(DB_URL!);
+		await connectDatabase(DB_URL!);
 		app.listen(port, () => {
-      logger.info(`Server is listening on port ${port}`);
-    });
+			logger.info(`Server is listening on port ${port}`);
+		});
 	} catch (error) {
 		logger.error(error);
 	}
