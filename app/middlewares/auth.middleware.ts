@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { verifyToken } from '../../services/jwt.js';
-import { UnauthorizedError } from '../../utils/errors.js';
+import { verifyToken } from '@services/jwt.js';
+import { UnauthorizedError } from '@utils/errors.js';
 
 export interface AuthenticatedRequest extends Request {
 	userId?: string;

@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import AuthRepository from '../repositories/auth.repository.js';
-import { BadRequestError, ConflictError, InternalServerError, NotFoundError, UnauthenticatedError } from '../../utils/errors.js';
-import { hashPassword, isValidPassword } from '../../services/bcrypt.js';
-import { createToken } from '../../services/jwt.js';
 import { StatusCodes } from 'http-status-codes';
-import { AuthenticatedRequest } from '../middlewares/auth.middleware.js';
+import AuthRepository from '@repositories/auth.repository.js';
+import { BadRequestError, ConflictError, InternalServerError, NotFoundError, UnauthenticatedError } from '@utils/errors.js';
+import { hashPassword, isValidPassword } from '@services/bcrypt.js';
+import { createToken } from '@services/jwt.js';
+import { AuthenticatedRequest } from '@middlewares/auth.middleware.js';
 
 class AuthController {
 	async register(req: Request, res: Response) {

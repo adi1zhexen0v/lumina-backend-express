@@ -1,4 +1,4 @@
-import PostModel, { IPost } from '../models/post.model.js';
+import PostModel, { IPost } from '@models/post.model.js';
 
 export type TypeCreatePost = Pick<IPost, 'caption' | 'tags' | 'media' | 'userId'>;
 export type TypeUpdatePost = Pick<IPost, 'caption' | 'tags' | 'media'>;

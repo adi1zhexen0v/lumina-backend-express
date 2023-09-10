@@ -1,4 +1,4 @@
-import UserModel, { IUser } from '../models/user.model.js';
+import UserModel, { IUser } from '@models/user.model.js';
 
 type TypeCreateUser = Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password'>;
 type TypeUpdateUser = Pick<IUser, 'firstName' | 'lastName' | 'email'>;

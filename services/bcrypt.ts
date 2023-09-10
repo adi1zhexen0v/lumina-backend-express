@@ -1,5 +1,5 @@
 import { genSalt, hash, compare } from 'bcrypt';
-import logger from '../utils/logger.js';
+import logger from '@utils/logger.js';
 
 export const hashPassword = async (passwd: string, saltRounds: number = 10) => {
 	try {

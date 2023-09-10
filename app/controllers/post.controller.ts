@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { Types } from 'mongoose';
 import { StatusCodes } from 'http-status-codes';
-import PostRepository, { TypeCreatePost, TypeUpdatePost } from '../repositories/post.repository.js';
-import { AuthenticatedRequest } from '../middlewares/auth.middleware.js';
-import { InternalServerError, NotFoundError } from '../../utils/errors.js';
+import PostRepository, { TypeCreatePost, TypeUpdatePost } from '@repositories/post.repository.js';
+import { AuthenticatedRequest } from '@middlewares/auth.middleware.js';
+import { InternalServerError, NotFoundError } from '@utils/errors.js';
 
 class PostController {
 	async createPost(req: AuthenticatedRequest, res: Response) {
