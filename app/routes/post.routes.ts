@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import AuthMiddleware from '@middlewares/auth.middleware.js';
-import PostController from '@controllers/post.controller.js';
-import { createPostValidator, updatePostValidator } from '@validators/post.validator.js';
-import { checkIdParamValidator } from '@validators/general.validator.js';
+import AuthMiddleware from '../middlewares/auth.middleware.js';
+import PostController from '../controllers/post.controller.js';
+import { createPostValidator, updatePostValidator } from '../validators/post.validator.js';
+import { checkIdParamValidator } from '../validators/general.validator.js';
 
 const router: Router = Router();
 

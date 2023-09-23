@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import AuthRepository from '@repositories/auth.repository.js';
-import { BadRequestError, ConflictError, InternalServerError, NotFoundError, UnauthenticatedError } from '@utils/errors.js';
-import { hashPassword, isValidPassword } from '@services/bcrypt.js';
-import { createToken } from '@services/jwt.js';
-import { AuthenticatedRequest } from '@middlewares/auth.middleware.js';
+import AuthRepository, { CreateUserDto, UpdateUserDto } from '../repositories/auth.repository.js';
+import { BadRequestError, ConflictError, InternalServerError, NotFoundError, UnauthenticatedError } from '../../utils/errors.js';
+import { hashPassword, isValidPassword } from '../../services/bcrypt.js';
+import { createToken } from '../../services/jwt.js';
+import { AuthenticatedRequest } from '../middlewares/auth.middleware.js';
 
 class AuthController {
 	async register(req: Request, res: Response) {
@@ -17,7 +17,13 @@ class AuthController {
 			}
 
 			const hashedPassword = await hashPassword(password);
-			const user = await AuthRepository.createUser({ firstName, lastName, email, password: hashedPassword! });
+			const userData: CreateUserDto = {
+				firstName, 
+				lastName, 
+				email, 
+				password: hashedPassword!
+			}
+			const user = await AuthRepository.createUser(userData);
 
 			const token = createToken(user._id);
 
@@ -53,7 +59,13 @@ class AuthController {
 		try {
 			const { firstName, lastName, email } = req.body;
 
-			await AuthRepository.updateUser(req.userId!, { firstName, lastName, email });
+			const userData: UpdateUserDto = { 
+				firstName, 
+				lastName, 
+				email 
+			};
+
+			await AuthRepository.updateUser(req.userId!, userData);
 			res.status(StatusCodes.OK).json({
 				message: 'Данные пользователя успешно обновлены'
 			});

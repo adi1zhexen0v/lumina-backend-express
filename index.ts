@@ -1,8 +1,8 @@
 import express, { Application } from 'express';
-import routes from '@routes/routes.js';
-import morganMiddleware from '@middlewares/morgan.middleware.js';
-import connectDatabase from '@services/database.js';
-import logger from '@utils/logger.js';
+import routes from './app/routes/routes.js';
+import morganMiddleware from './app/middlewares/morgan.middleware.js';
+import connectDatabase from './services/database.js';
+import logger from './utils/logger.js';
 import 'dotenv/config';
 
 const { PORT, DB_URL } = process.env;
@@ -26,5 +26,3 @@ const start = async () => {
 	}
 };
 start();
-
-export default app;

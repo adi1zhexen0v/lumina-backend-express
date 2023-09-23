@@ -4,7 +4,6 @@
     "lib": ["ES6"],
     "module": "NodeNext",
     "rootDir": "./",
-    "baseUrl": ".//",
     "resolveJsonModule": true,
     "allowJs": true,
     "sourceMap": true,
@@ -14,18 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-    "skipLibCheck": true,
-    "paths": {
-      "@/*": ["*"],
-      "@utils/*": ["utils/*"],
-      "@services/*": ["services/*"],
-      "@controllers/*": ["app/controllers/*"],
-      "@middlewares/*": ["app/middlewares/*"],
-      "@models/*": ["app/models/*"],
-      "@repositories/*": ["app/repositories/*"],
-      "@routes/*": ["app/routes/*"],
-      "@validators/*": ["app/validators/*"]
-    }
+    "skipLibCheck": true
   },
   "include": ["**/*"],
   "exclude": ["node_modules"],

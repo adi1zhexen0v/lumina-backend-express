@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { param, body, validationResult, ValidationChain } from 'express-validator';
-import { BadRequestError } from '@utils/errors.js';
+import { BadRequestError } from '../../utils/errors.js';
 
 type RequestHandler = (req: Request, res: Response, next: NextFunction) => void;
 

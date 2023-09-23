@@ -42,7 +42,7 @@ export const UserSchema: Schema<IUser> = new Schema<IUser>({
 	isActivated: {
 		type: Boolean,
 		required: true,
-		default: false
+		default: true
 	},
 	followers: {
 		type: [Types.ObjectId],

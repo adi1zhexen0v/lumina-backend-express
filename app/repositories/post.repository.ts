@@ -1,14 +1,18 @@
-import PostModel, { IPost } from '@models/post.model.js';
+import PostModel, { IPost } from '../models/post.model.js';
 
-export type TypeCreatePost = Pick<IPost, 'caption' | 'tags' | 'media' | 'userId'>;
-export type TypeUpdatePost = Pick<IPost, 'caption' | 'tags' | 'media'>;
+export type CreatePostDto = Pick<IPost, 'caption' | 'tags' | 'userId'> & Partial<Pick<IPost, 'media'>>;
+export type UpdatePostDto = Pick<IPost, 'caption' | 'tags' | 'media'>;
 
 class PostRepository {
-	async createPost(data: TypeCreatePost) {
+	async getById(id: string) {
+		return await PostModel.findById(id);
+	}
+
+	async createPost(data: CreatePostDto) {
 		return await new PostModel(data).save();
 	}
 
-	async updatePost(data: TypeUpdatePost, id: string) {
+	async updatePost(data: UpdatePostDto, id: string) {
 		await PostModel.findByIdAndUpdate(id, data);
 	}
 

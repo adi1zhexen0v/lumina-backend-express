@@ -1,10 +1,10 @@
-import UserModel, { IUser } from '@models/user.model.js';
+import UserModel, { IUser } from '../models/user.model.js';
 
-type TypeCreateUser = Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password'>;
-type TypeUpdateUser = Pick<IUser, 'firstName' | 'lastName' | 'email'>;
+export type CreateUserDto = Pick<IUser, 'firstName' | 'lastName' | 'email' | 'password'>;
+export type UpdateUserDto = Pick<IUser, 'firstName' | 'lastName' | 'email'>;
 
 class AuthRepository {
-	async createUser(data: TypeCreateUser) {
+	async createUser(data: CreateUserDto) {
 		return await new UserModel(data).save();
 	}
 
@@ -16,7 +16,7 @@ class AuthRepository {
 		return await UserModel.findById(id);
 	}
 
-	async updateUser(id: string, data: TypeUpdateUser) {
+	async updateUser(id: string, data: UpdateUserDto) {
 		await UserModel.findByIdAndUpdate(id, data);
 	}
 

@@ -1,5 +1,5 @@
 import morgan, { StreamOptions } from 'morgan';
-import logger from '@utils/logger.js';
+import logger from '../../utils/logger.js';
 import 'dotenv/config';
 
 const stream: StreamOptions = {
